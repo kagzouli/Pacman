@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  Log4j Configuration                                                  -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<!-- $Id: log4j.xml,v 1.13.2.13 2004/05/11 16:33:46 belaban Exp $ -->
+
+<!--
+   | For more configuration infromation and examples see the Jakarta Log4j
+   | owebsite: http://jakarta.apache.org/log4j
+ -->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+   <!-- ============================== -->
+   <!-- Append messages to the console -->
+   <!-- ============================== -->
+
+   <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+      <param name="Target" value="System.out"/>
+      <param name="Threshold" value="WARN"/>
+      <param name="encoding" value="UTF-8"/>
+
+      <layout class="org.apache.log4j.PatternLayout">
+         <!-- The default pattern: Date Priority [Category] Message\n -->
+         <param name="ConversionPattern" value="%d{ABSOLUTE} %-5p %X{user} [%c{1}] %m%n"/>
+      </layout>
+   </appender>
+
+   
+   <!-- ====================================== -->
+   <!-- Append messages to the iia application -->
+   <!-- ALE 23/08/2006                         -->
+   <!-- ====================================== --> 
+    
+     
+   <category name="com.pacman">
+     <priority value="INFO"/>
+    <appender-ref ref="CONSOLE" />
+   </category>
+   
+
+   <root>
+      <appender-ref ref="CONSOLE"/>
+   </root>
+
+</log4j:configuration>
